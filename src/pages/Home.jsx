@@ -148,6 +148,50 @@ const Home = () => {
     ))}
   </div>
 
+          </section>
+          {/* Why BodhiBihar Section */}
+<section style={{ backgroundColor: '#2C2416', padding: '100px 48px' }}>
+
+  <p style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#E8841A', marginBottom: '12px' }}>
+    Why Choose Us
+  </p>
+
+  <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '48px', color: '#FAF6F0', fontWeight: 500, marginBottom: '64px' }}>
+    Why <span style={{ color: '#E8841A', fontStyle: 'italic' }}>BodhiBihar</span>
+  </h2>
+
+  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '48px' }}>
+    {[
+      {
+        number: '01',
+        title: 'Authentic Itineraries',
+        desc: 'Crafted by spiritual guides and historians to ensure depth and historical accuracy at every sacred site.',
+      },
+      {
+        number: '02',
+        title: 'Curated Stays',
+        desc: 'From modern comfort to traditional monasteries, we select stays that nurture the soul and honor the journey.',
+      },
+      {
+        number: '03',
+        title: 'Multilingual Support',
+        desc: 'Dedicated guides speaking 12 languages to assist global pilgrims — Japanese, Thai, Chinese and more.',
+      },
+    ].map((item) => (
+      <div key={item.number}>
+        <p style={{ color: '#E8841A', fontSize: '11px', letterSpacing: '0.3em', marginBottom: '20px' }}>
+          {item.number}
+        </p>
+        <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '26px', color: '#FAF6F0', marginBottom: '16px' }}>
+          {item.title}
+        </h3>
+        <p style={{ color: '#FAF6F0', opacity: 0.6, fontSize: '14px', lineHeight: 1.8 }}>
+          {item.desc}
+        </p>
+      </div>
+    ))}
+  </div>
+
 </section>
     </div>
   )
