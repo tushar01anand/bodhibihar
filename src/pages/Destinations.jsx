@@ -1,31 +1,43 @@
+import { useState } from 'react'
+
 const destinations = [
   {
     name: 'Bodh Gaya',
     tagline: 'The Epicenter of Enlightenment',
     description: 'The most sacred Buddhist site in the world. Where Siddhartha Gautama attained enlightenment under the Bodhi Tree.',
     color: '#2C2416',
+    filter: 'Bodh Gaya',
   },
   {
     name: 'Nalanda',
     tagline: 'Wisdom of the Ancient World',
     description: 'The ancient seat of learning and philosophical discourse. Home to the world\'s first residential university.',
     color: '#6B4C2A',
+    filter: 'Nalanda',
   },
   {
     name: 'Rajgir',
     tagline: 'The Royal Abode of Peace',
     description: 'The ancient capital where the Buddha taught for many years. Surrounded by five hills of extraordinary beauty.',
     color: '#4A3520',
+    filter: 'Rajgir',
   },
   {
     name: 'Vaishali',
     tagline: 'Birthplace of Democracy & Monastic Peace',
     description: 'One of the first democratic republics in the world. Where the Buddha delivered his last sermon.',
     color: '#3D2C1A',
+    filter: 'Vaishali',
   },
 ]
 
 const Destinations = () => {
+  const [active, setActive] = useState('All')
+
+  const filtered = active === 'All'
+    ? destinations
+    : destinations.filter((d) => d.filter === active)
+
   return (
     <div style={{ backgroundColor: '#FAF6F0', minHeight: '100vh', paddingTop: '80px' }}>
 
@@ -48,9 +60,10 @@ const Destinations = () => {
       {/* Filter Bar */}
       <section style={{ padding: '0 48px 48px' }}>
         <div style={{ display: 'flex', gap: '4px' }}>
-          {['All', 'Bodh Gaya', 'Nalanda', 'Rajgir', 'Vaishali'].map((filter, i) => (
+          {['All', 'Bodh Gaya', 'Nalanda', 'Rajgir', 'Vaishali'].map((filter) => (
             <button
               key={filter}
+              onClick={() => setActive(filter)}
               style={{
                 padding: '8px 20px',
                 fontSize: '11px',
@@ -58,9 +71,9 @@ const Destinations = () => {
                 textTransform: 'uppercase',
                 border: 'none',
                 cursor: 'pointer',
-                backgroundColor: i === 0 ? '#E8841A' : 'transparent',
-                color: i === 0 ? '#FAF6F0' : '#6B4C2A',
-                borderBottom: i === 0 ? 'none' : '1px solid #E8DDD0',
+                backgroundColor: active === filter ? '#E8841A' : 'transparent',
+                color: active === filter ? '#FAF6F0' : '#6B4C2A',
+                borderBottom: active === filter ? 'none' : '1px solid #E8DDD0',
               }}
             >
               {filter}
@@ -71,8 +84,8 @@ const Destinations = () => {
 
       {/* Destinations Grid */}
       <section style={{ padding: '0 48px 100px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px' }}>
-          {destinations.map((dest) => (
+        <div style={{ display: 'grid', gridTemplateColumns: filtered.length === 1 ? '1fr' : '1fr 1fr', gap: '2px' }}>
+          {filtered.map((dest) => (
             <div
               key={dest.name}
               style={{
@@ -104,11 +117,11 @@ const Destinations = () => {
 
       {/* Newsletter */}
       <section style={{ backgroundColor: '#2C2416', padding: '80px 48px', textAlign: 'center' }}>
-        <p style={{ fontSize: '24px', marginBottom: '4px' }}>🙏</p>
+        <p style={{ fontSize: '24px', marginBottom: '16px' }}>🙏</p>
         <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '36px', color: '#FAF6F0', marginBottom: '32px' }}>
           Join our silent newsletter for curated pilgrimage insights.
         </h3>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '0' }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <input
             type="email"
             placeholder="Your essence (Email)"
