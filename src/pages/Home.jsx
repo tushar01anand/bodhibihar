@@ -41,7 +41,7 @@ const Home = () => {
           <h1
             style={{
               fontFamily: "Cormorant Garamond, Georgia, serif",
-              fontSize: "72px",
+             fontSize: 'clamp(36px, 8vw, 72px)',
               color: "#FAF6F0",
               lineHeight: 1.1,
               marginBottom: "24px",

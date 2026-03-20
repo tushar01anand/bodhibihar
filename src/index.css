@@ -31,3 +31,9 @@ body {
     display: block !important;
   }
 }
+@media (max-width: 768px) {
+  section {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
