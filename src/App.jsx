@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Destinations from './pages/Destinations'
 import Itinerary from './pages/Itinerary'
+import Stays from './pages/Stays'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/itinerary" element={<Itinerary />} />
+        <Route path="/stays" element={<Stays />} />
       </Routes>
     </BrowserRouter>
   )
