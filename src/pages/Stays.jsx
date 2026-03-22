@@ -7,7 +7,7 @@ const stays = [
     type: 'MONASTERY',
     price: '2,400',
     description: 'A center for Buddhist meditation and study, offering simple, clean rooms amidst lush gardens. Perfect for long-term retreat.',
-    whatsapp: '919999999999',
+    whatsapp: '+917782019833',
     filter: 'Bodh Gaya',
   },
   {
@@ -16,7 +16,7 @@ const stays = [
     type: 'HOTEL',
     price: '8,500',
     description: 'Japanese-inspired hospitality focused on silence and comfort. Features a traditional Zen garden and communal meditation hall.',
-    whatsapp: '919999999999',
+    whatsapp: '+917782019833',
     filter: 'Bodh Gaya',
   },
   {
@@ -25,7 +25,7 @@ const stays = [
     type: 'MONASTERY',
     price: '1,800',
     description: 'Stay within the vibrant Tibetan community. Tergar provides an authentic monastic experience with modern basic amenities.',
-    whatsapp: '919999999999',
+    whatsapp: '+917782019833',
     filter: 'Bodh Gaya',
   },
   {
@@ -34,7 +34,7 @@ const stays = [
     type: 'HOTEL',
     price: '4,200',
     description: 'Nestled near the Gridhakuta Hill, this boutique lodge offers panoramic views and organic vegetarian cuisine.',
-    whatsapp: '919999999999',
+    whatsapp: '+917782019833',
     filter: 'Rajgir',
   },
   {
@@ -43,7 +43,7 @@ const stays = [
     type: 'MONASTERY',
     price: '1,200',
     description: 'Beautifully maintained Thai-style architecture. Offers austere but deeply peaceful accommodations for pilgrims.',
-    whatsapp: '919999999999',
+    whatsapp: '+917782019833',
     filter: 'Bodh Gaya',
   },
   {
@@ -52,7 +52,7 @@ const stays = [
     type: 'HOTEL',
     price: '3,800',
     description: 'Located just minutes from the Nalanda University ruins, combining historic charm with modern hospitality.',
-    whatsapp: '919999999999',
+    whatsapp: '+917782019833',
     filter: 'Nalanda',
   },
 ]

@@ -62,7 +62,7 @@ const Navbar = () => {
 
       {/* CTA - Desktop */}
       <a
-        href="https://wa.me/919999999999"
+        href="https://wa.me/+917782019833"
         target="_blank"
         rel="noopener noreferrer"
         className="desktop-nav"
@@ -134,7 +134,7 @@ const Navbar = () => {
 
           {/* CTA - Mobile */}
           <a
-            href="https://wa.me/919999999999"
+            href="https://wa.me/+917782019833"
             target="_blank"
             rel="noopener noreferrer"
             style={{

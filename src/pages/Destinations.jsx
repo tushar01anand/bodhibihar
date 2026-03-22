@@ -6,6 +6,7 @@ const destinations = [
     tagline: 'The Epicenter of Enlightenment',
     description: 'The most sacred Buddhist site in the world. Where Siddhartha Gautama attained enlightenment under the Bodhi Tree.',
     color: '#2C2416',
+    image: '/bodhgaya.jpg',
     filter: 'Bodh Gaya',
   },
   {
@@ -13,6 +14,7 @@ const destinations = [
     tagline: 'Wisdom of the Ancient World',
     description: 'The ancient seat of learning and philosophical discourse. Home to the world\'s first residential university.',
     color: '#6B4C2A',
+    image: '/nalanda.jpg',
     filter: 'Nalanda',
   },
   {
@@ -20,6 +22,7 @@ const destinations = [
     tagline: 'The Royal Abode of Peace',
     description: 'The ancient capital where the Buddha taught for many years. Surrounded by five hills of extraordinary beauty.',
     color: '#4A3520',
+    image: '/rajgir.jpg',
     filter: 'Rajgir',
   },
   {
@@ -27,6 +30,7 @@ const destinations = [
     tagline: 'Birthplace of Democracy & Monastic Peace',
     description: 'One of the first democratic republics in the world. Where the Buddha delivered his last sermon.',
     color: '#3D2C1A',
+    image: '/vaishali.jpg',
     filter: 'Vaishali',
   },
 ]
@@ -46,8 +50,8 @@ const Destinations = () => {
         <p style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#6B4C2A', marginBottom: '12px' }}>
           Sacred Sites
         </p>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '64px', color: '#2C2416', fontWeight: 500, lineHeight: 1.1 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
+          <h1 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(36px, 6vw, 64px)', color: '#2C2416', fontWeight: 500, lineHeight: 1.1 }}>
             Timeless<br />
             <span style={{ fontStyle: 'italic' }}>Sanctuaries</span>
           </h1>
@@ -59,7 +63,7 @@ const Destinations = () => {
 
       {/* Filter Bar */}
       <section style={{ padding: '0 48px 48px' }}>
-        <div style={{ display: 'flex', gap: '4px' }}>
+        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
           {['All', 'Bodh Gaya', 'Nalanda', 'Rajgir', 'Vaishali'].map((filter) => (
             <button
               key={filter}
@@ -84,11 +88,14 @@ const Destinations = () => {
 
       {/* Destinations Grid */}
       <section style={{ padding: '0 48px 100px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: filtered.length === 1 ? '1fr' : '1fr 1fr', gap: '2px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: filtered.length === 1 ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2px' }}>
           {filtered.map((dest) => (
             <div
               key={dest.name}
               style={{
+                backgroundImage: 'linear-gradient(to top, rgba(44,36,22,0.95) 0%, rgba(44,36,22,0.3) 100%), url(' + dest.image + ')',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
                 backgroundColor: dest.color,
                 padding: '64px 48px',
                 minHeight: '320px',
@@ -121,7 +128,7 @@ const Destinations = () => {
         <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '36px', color: '#FAF6F0', marginBottom: '32px' }}>
           Join our silent newsletter for curated pilgrimage insights.
         </h3>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0' }}>
           <input
             type="email"
             placeholder="Your essence (Email)"
