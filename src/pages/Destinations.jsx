@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import PageMeta from '../components/PageMeta'
 
 const destinations = [
@@ -122,6 +123,17 @@ const Destinations = () => {
               <h2>{dest.name}</h2>
               <p>{dest.description}</p>
               <span>Ideal for reflection, learning, and slow travel</span>
+              <div className="destination-feature__actions">
+                <Link
+                  to={`/contact?tripType=${encodeURIComponent('Private custom trip')}&notes=${encodeURIComponent(`I would like to shape part of my Bihar journey around ${dest.name}. Please suggest pacing, stays, and nearby sacred sites.`)}`}
+                  className="home-button home-button--primary"
+                >
+                  Plan This Stop
+                </Link>
+                <Link to="/itinerary" className="destination-feature__link">
+                  See Circuit Flow
+                </Link>
+              </div>
             </div>
           </article>
         ))}
@@ -138,6 +150,26 @@ const Destinations = () => {
             unexpected conversations, and repeated visits to the same sacred
             places at different hours of the day.
           </p>
+        </div>
+      </section>
+
+      <section className="home-cta destinations-cta">
+        <div className="page-shell home-cta__panel">
+          <div>
+            <p className="page-kicker">Route Support</p>
+            <h2>Know the places you want, but not the order, pace, or stay mix?</h2>
+          </div>
+          <div className="home-cta__actions">
+            <Link
+              to={`/contact?tripType=${encodeURIComponent('Private custom trip')}&notes=${encodeURIComponent('I have a few destinations in mind and would like help arranging them into a thoughtful Bihar journey.')}`}
+              className="home-button home-button--primary"
+            >
+              Build My Route
+            </Link>
+            <Link to="/itinerary" className="home-button home-button--outline">
+              View Sample Circuit
+            </Link>
+          </div>
         </div>
       </section>
     </div>

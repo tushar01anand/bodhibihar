@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { createWhatsAppLink } from '../lib/contact'
 
 const navItems = [
   ['/', 'Home'],
@@ -34,14 +33,12 @@ const Navbar = () => {
           ))}
         </div>
 
-        <a
-          href={createWhatsAppLink('Hello BodhiBihar, I would like help planning a Buddhist circuit journey.')}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/contact"
           className="site-nav__cta desktop-nav"
         >
           Plan Journey
-        </a>
+        </Link>
 
         <button
           className="site-nav__toggle mobile-nav"
@@ -69,14 +66,13 @@ const Navbar = () => {
             </NavLink>
           ))}
 
-          <a
-            href={createWhatsAppLink('Hello BodhiBihar, I would like help planning a Buddhist circuit journey.')}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
             className="site-nav__mobile-cta"
           >
             Plan Journey
-          </a>
+          </Link>
         </div>
       )}
     </nav>

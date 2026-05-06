@@ -235,6 +235,35 @@ a {
   text-transform: uppercase;
 }
 
+.destination-feature__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.destination-feature__actions .home-button {
+  min-height: 46px;
+  padding: 0 20px;
+}
+
+.destination-feature__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border: 1px solid rgba(250, 246, 240, 0.24);
+  border-radius: 999px;
+  color: #faf6f0;
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+}
+
 .destinations-note {
   padding-bottom: 96px;
 }
@@ -777,6 +806,12 @@ a {
     color 0.2s ease;
 }
 
+button.home-button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
 .home-button:hover {
   transform: translateY(-1px);
 }
@@ -1312,10 +1347,20 @@ a {
   color: #2c2416;
 }
 
+.contact-form__intro,
+.contact-form__submit-note,
+.contact-form__status,
+.contact-sidebar__plain p,
+.legal-card p {
+  color: #6f5538;
+  line-height: 1.8;
+}
+
 .contact-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
+  margin-top: 24px;
 }
 
 .contact-form label {
@@ -1327,6 +1372,10 @@ a {
 
 .contact-form__full {
   grid-column: 1 / -1;
+}
+
+.contact-form__required {
+  color: #c36f13;
 }
 
 .contact-form input,
@@ -1341,8 +1390,21 @@ a {
   font: inherit;
 }
 
+.contact-form input[aria-invalid='true'],
+.contact-form select[aria-invalid='true'],
+.contact-form textarea[aria-invalid='true'] {
+  border-color: rgba(187, 74, 47, 0.64);
+  background: rgba(255, 245, 240, 0.96);
+}
+
 .contact-form textarea {
   resize: vertical;
+}
+
+.contact-form__error {
+  color: #bb4a2f;
+  font-size: 0.86rem;
+  line-height: 1.4;
 }
 
 .contact-form__actions {
@@ -1350,6 +1412,27 @@ a {
   gap: 14px;
   flex-wrap: wrap;
   margin-top: 22px;
+}
+
+.contact-form__status {
+  padding: 14px 16px;
+  border: 1px solid rgba(195, 111, 19, 0.22);
+  border-radius: 18px;
+  background: rgba(248, 231, 201, 0.42);
+}
+
+.contact-form__fallbacks {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.contact-form__fallbacks .home-button--ghost {
+  border: 1px solid rgba(44, 36, 22, 0.12);
+  color: #2c2416;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: none;
 }
 
 .contact-sidebar {
@@ -1402,6 +1485,34 @@ a {
   border-radius: 26px;
 }
 
+.contact-sidebar__ranges {
+  display: grid;
+  gap: 14px;
+}
+
+.contact-sidebar__ranges div {
+  display: grid;
+  gap: 6px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(44, 36, 22, 0.08);
+}
+
+.contact-sidebar__ranges div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.contact-sidebar__ranges strong,
+.contact-proof__grid strong {
+  color: #2c2416;
+}
+
+.contact-sidebar__ranges span,
+.contact-proof__grid span {
+  color: #6f5538;
+  line-height: 1.75;
+}
+
 .contact-sidebar__plain a,
 .legal-card a {
   color: #c36f13;
@@ -1418,6 +1529,29 @@ a {
   gap: 16px;
   max-width: 860px;
   margin-bottom: 96px;
+}
+
+.contact-proof {
+  padding-bottom: 96px;
+}
+
+.contact-proof__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.contact-proof__grid div {
+  padding: 22px 24px;
+  border: 1px solid rgba(44, 36, 22, 0.08);
+  border-radius: 24px;
+  background: rgba(255, 248, 239, 0.92);
+  box-shadow: 0 18px 36px rgba(44, 36, 22, 0.08);
+}
+
+.destinations-cta,
+.itinerary-cta {
+  padding-bottom: 96px;
 }
 
 .desktop-nav {
@@ -1467,6 +1601,11 @@ a {
 
   .destination-feature__rhythm {
     text-align: left;
+  }
+
+  .destination-feature__actions,
+  .contact-proof__grid {
+    grid-template-columns: 1fr;
   }
 
   .itinerary-sidebar {
@@ -1567,7 +1706,11 @@ a {
     flex-direction: column;
   }
 
-  .contact-form__actions a {
+  .contact-form__actions a,
+  .contact-form__actions button,
+  .contact-form__fallbacks a,
+  .destination-feature__actions a,
+  .destination-feature__link {
     width: 100%;
   }
 

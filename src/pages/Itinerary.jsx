@@ -170,6 +170,31 @@ const Itinerary = () => {
           </div>
         </aside>
       </section>
+
+      <section className="home-cta itinerary-cta">
+        <div className="page-shell home-cta__panel">
+          <div>
+            <p className="page-kicker">Make It Yours</p>
+            <h2>Use this 5-day circuit as a base, then adjust the rhythm around your dates and intent.</h2>
+          </div>
+          <div className="home-cta__actions">
+            <Link
+              to={`/contact?tripType=${encodeURIComponent('Buddhist circuit')}&notes=${encodeURIComponent('I am interested in the 5-day BodhiBihar circuit and would like help adapting it to my dates, pace, and stay preferences.')}`}
+              className="home-button home-button--primary"
+            >
+              Plan This Journey
+            </Link>
+            <a
+              href={createWhatsAppLink('Hello BodhiBihar, I would like to adapt the 5-day circuit to my dates and travel style.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-button home-button--outline"
+            >
+              Ask on WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
