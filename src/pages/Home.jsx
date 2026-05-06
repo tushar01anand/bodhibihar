@@ -119,16 +119,16 @@ const Home = () => {
       <section className="home-trust-strip">
         <div className="home-shell home-trust-strip__grid">
           <div>
-            <strong>Custom planning</strong>
-            <span>Share dates, group size, and comfort level before you commit.</span>
+            <strong>Personalized trip planning</strong>
+            <span>Tell us your dates, group size, and travel preferences before you decide.</span>
           </div>
           <div>
-            <strong>Indicative pricing</strong>
-            <span>Final quotes depend on season, stays, transport, and inclusions.</span>
+            <strong>Transparent starting prices</strong>
+            <span>Estimated costs are shared upfront, with final quotes based on season, stays, and transport.</span>
           </div>
           <div>
-            <strong>Direct coordination</strong>
-            <span>Talk to a human on WhatsApp or email, not a generic lead form void.</span>
+            <strong>Direct travel assistance</strong>
+            <span>Connect with a real person on WhatsApp or email for clear, timely support.</span>
           </div>
         </div>
       </section>

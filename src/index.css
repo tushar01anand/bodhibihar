@@ -841,7 +841,7 @@ button.home-button {
 .home-hero {
   position: relative;
   min-height: 100vh;
-  padding: 132px 0 72px;
+  padding: 168px 0 72px;
   background-image: url('/Hero.jpg');
   background-size: cover;
   background-position: center;
@@ -863,6 +863,7 @@ button.home-button {
   grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
   gap: 40px;
   align-items: end;
+  padding-top: 88px;
 }
 
 .home-hero__copy h1 {
@@ -936,7 +937,7 @@ button.home-button {
 }
 
 .home-intro {
-  padding: 84px 0 28px;
+  padding: 44px 0 28px;
 }
 
 .home-intro__grid,
@@ -1244,23 +1245,29 @@ button.home-button {
 }
 
 .home-trust-strip {
-  margin-top: -34px;
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  margin-top: 0;
+  padding: 32px 0 0;
+  background: #faf6f0;
 }
 
 .home-trust-strip__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+  align-items: stretch;
 }
 
 .home-trust-strip__grid div {
+  min-height: 154px;
   padding: 20px 22px;
   border: 1px solid rgba(44, 36, 22, 0.08);
   border-radius: 24px;
-  background: rgba(255, 248, 239, 0.92);
+  background: #fff8ef;
   box-shadow: 0 18px 36px rgba(44, 36, 22, 0.08);
+  display: grid;
+  align-content: start;
 }
 
 .home-trust-strip__grid strong {
@@ -1648,7 +1655,11 @@ button.home-button {
 
   .home-hero {
     min-height: auto;
-    padding: 116px 0 56px;
+    padding: 132px 0 56px;
+  }
+
+  .home-trust-strip {
+    padding-top: 24px;
   }
 
   .home-hero__content,
@@ -1666,12 +1677,20 @@ button.home-button {
     font-size: clamp(2.9rem, 15vw, 4.4rem);
   }
 
+  .home-hero__content {
+    padding-top: 56px;
+  }
+
   .home-hero__panel {
     justify-self: stretch;
   }
 
   .home-hero__stats {
     grid-template-columns: 1fr;
+  }
+
+  .home-intro {
+    padding-top: 36px;
   }
 
   .home-destination-grid,
