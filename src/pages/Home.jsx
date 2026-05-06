@@ -1,243 +1,324 @@
 import { Link } from 'react-router-dom'
+import PageMeta from '../components/PageMeta'
+import { CONTACT_EMAIL, createWhatsAppLink } from '../lib/contact'
 
 const destinations = [
   {
     name: 'Bodh Gaya',
-    tagline: 'The Epicenter of Enlightenment',
-    color: '#2C2416',
+    tagline: 'Meditate beneath the Bodhi Tree and experience the stillness of awakening.',
     image: '/bodhgaya.jpg',
-    path: '/destinations',
+    accent: 'Mahabodhi Temple',
   },
   {
     name: 'Nalanda',
-    tagline: 'Wisdom of the Ancient World',
-    color: '#6B4C2A',
+    tagline: 'Walk the ruins of the world’s great monastic university and its living memory.',
     image: '/nalanda.jpg',
-    path: '/destinations',
+    accent: 'Ancient Learning',
   },
   {
     name: 'Rajgir',
-    tagline: 'The Royal Abode of Peace',
-    color: '#4A3520',
+    tagline: 'Trace the hills, caves, and teachings that shaped the Buddha’s early journeys.',
     image: '/rajgir.jpg',
-    path: '/destinations',
+    accent: 'Griddhakuta Hill',
   },
   {
     name: 'Vaishali',
-    tagline: 'Birthplace of Democracy & Monastic Peace',
-    color: '#3D2C1A',
+    tagline: 'Discover a land of monastic calm, republican history, and sacred relics.',
     image: '/vaishali.jpg',
-    path: '/destinations',
+    accent: 'Relic Stupa',
   },
+]
+
+const highlights = [
+  {
+    number: '01',
+    title: 'Pilgrim-first planning',
+    desc: 'Journeys are designed around reflection, rest, and meaningful time at each sacred site instead of rushed checklists.',
+  },
+  {
+    number: '02',
+    title: 'Trusted local knowledge',
+    desc: 'Historical context, monastery etiquette, and transport choices are curated for international and domestic travelers alike.',
+  },
+  {
+    number: '03',
+    title: 'Flexible trip building',
+    desc: 'We can shape the route around retreat time, comfort level, arrival city, and whether you are traveling solo, as a family, or as a group.',
+  },
+]
+
+const itineraryDays = [
+  'Day 1: Arrival and evening prayers in Bodh Gaya',
+  'Day 2: Mahabodhi Temple, monasteries, and meditation time',
+  'Day 3: Nalanda ruins and Rajgir’s sacred hill trails',
+  'Day 4: Vaishali and quiet heritage stops',
+  'Day 5: Reflection, local shopping, and departure',
+]
+
+const footerLinks = [
+  ['/', 'Home'],
+  ['/destinations', 'Destinations'],
+  ['/itinerary', 'Itineraries'],
+  ['/stays', 'Stays'],
+  ['/contact', 'Contact'],
 ]
 
 const Home = () => {
   return (
-    <div style={{ backgroundColor: '#FAF6F0', minHeight: '100vh' }}>
+    <div className="home-page">
+      <PageMeta />
 
-      {/* Hero Section */}
-      <section
-        style={{
-          minHeight: '100vh',
-          backgroundImage: 'linear-gradient(to bottom, rgba(44,36,22,0.2) 0%, rgba(44,36,22,0.75) 100%), url(/Hero.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          position: 'relative',
-          display: 'flex',
-          alignItems: 'flex-end',
-          paddingBottom: '80px',
-          paddingLeft: '48px',
-          paddingRight: '48px',
-        }}
-      >
-        <div style={{ position: 'relative', zIndex: 10, maxWidth: '700px' }}>
-          <p style={{ color: '#FAF6F0', fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '16px', opacity: 0.8 }}>
-            The Spiritual Heart of India
-          </p>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(36px, 8vw, 72px)', color: '#FAF6F0', lineHeight: 1.1, marginBottom: '24px', fontWeight: 500 }}>
-            Walk the Path of <br />
-            <span style={{ color: '#E8841A', fontStyle: 'italic' }}>Enlightenment</span>
-          </h1>
-          <p style={{ color: '#FAF6F0', fontSize: '18px', fontWeight: 300, opacity: 0.8, marginBottom: '40px', maxWidth: '520px', lineHeight: 1.7 }}>
-            Bihar's sacred Buddhist circuit — Bodh Gaya, Nalanda, Rajgir, Vaishali. A journey into the silence of being.
-          </p>
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-            <Link to="/destinations" style={{ backgroundColor: '#E8841A', color: '#FAF6F0', padding: '16px 32px', fontSize: '12px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block' }}>
-              Explore Destinations
-            </Link>
-            <Link to="/itinerary" style={{ border: '1px solid #FAF6F0', color: '#FAF6F0', padding: '16px 32px', fontSize: '12px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block' }}>
-              Plan My Journey
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Sacred Four Section */}
-      <section style={{ backgroundColor: '#FAF6F0', padding: '100px 48px' }}>
-        <p style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#6B4C2A', marginBottom: '12px' }}>
-          Sacred Gateways
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px', flexWrap: 'wrap', gap: '24px' }}>
-          <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(32px, 5vw, 48px)', color: '#2C2416', fontWeight: 500 }}>
-            The Sacred Four
-          </h2>
-          <p style={{ maxWidth: '300px', color: '#6B4C2A', fontSize: '14px', lineHeight: 1.7, textAlign: 'right' }}>
-            Four pillars of wisdom where the Buddha lived, taught, and transcended.
-          </p>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2px' }}>
-          {destinations.map((dest) => (
-            <Link
-              key={dest.name}
-              to="/destinations"
-              style={{
-                backgroundImage: 'linear-gradient(to top, rgba(44,36,22,0.95) 0%, rgba(44,36,22,0.3) 100%), url(' + dest.image + ')',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundColor: dest.color,
-                padding: '48px',
-                cursor: 'pointer',
-                minHeight: '280px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-end',
-                textDecoration: 'none',
-              }}
-            >
-              <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '36px', color: '#FAF6F0', marginBottom: '8px' }}>
-                {dest.name}
-              </h3>
-              <p style={{ color: '#FAF6F0', opacity: 0.7, fontSize: '13px' }}>
-                {dest.tagline}
-              </p>
-              <p style={{ color: '#E8841A', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', marginTop: '16px' }}>
-                Explore →
-              </p>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Why BodhiBihar Section */}
-      <section style={{ backgroundColor: '#2C2416', padding: '100px 48px' }}>
-        <p style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#E8841A', marginBottom: '12px' }}>
-          Why Choose Us
-        </p>
-        <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(32px, 5vw, 48px)', color: '#FAF6F0', fontWeight: 500, marginBottom: '64px' }}>
-          Why <span style={{ color: '#E8841A', fontStyle: 'italic' }}>BodhiBihar</span>
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '48px' }}>
-          {[
-            { number: '01', title: 'Authentic Itineraries', desc: 'Crafted by spiritual guides and historians to ensure depth and historical accuracy at every sacred site.' },
-            { number: '02', title: 'Curated Stays', desc: 'From modern comfort to traditional monasteries, we select stays that nurture the soul and honor the journey.' },
-            { number: '03', title: 'Multilingual Support', desc: 'Dedicated guides speaking 12 languages to assist global pilgrims — Japanese, Thai, Chinese and more.' },
-          ].map((item) => (
-            <div key={item.number}>
-              <p style={{ color: '#E8841A', fontSize: '11px', letterSpacing: '0.3em', marginBottom: '20px' }}>{item.number}</p>
-              <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '26px', color: '#FAF6F0', marginBottom: '16px' }}>{item.title}</h3>
-              <p style={{ color: '#FAF6F0', opacity: 0.6, fontSize: '14px', lineHeight: 1.8 }}>{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Featured Itinerary Section */}
-      <section style={{ backgroundColor: '#FAF6F0', padding: '100px 48px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '80px', alignItems: 'center' }}>
-          <div style={{ backgroundColor: '#2C2416', padding: '64px', minHeight: '400px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-            <p style={{ color: '#E8841A', fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '16px' }}>Featured Itinerary</p>
-            <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '40px', color: '#FAF6F0', marginBottom: '24px', lineHeight: 1.2 }}>
-              The 5-Day Bihar Buddhist Circuit
-            </h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '32px' }}>
-              {['Day 1-2: Awakening in Bodh Gaya', 'Day 3: The Wisdom of Nalanda & Rajgir', 'Day 4: Peace at Vaishali', 'Day 5: Reflection & Departure'].map((day) => (
-                <p key={day} style={{ color: '#FAF6F0', opacity: 0.7, fontSize: '13px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '10px' }}>
-                  — {day}
-                </p>
-              ))}
-            </div>
-            <Link to="/itinerary" style={{ backgroundColor: '#E8841A', color: '#FAF6F0', padding: '14px 28px', fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block' }}>
-              View Full Details →
-            </Link>
-          </div>
-
-          <div>
-            <p style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#6B4C2A', marginBottom: '16px' }}>A Sacred Journey</p>
-            <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(32px, 5vw, 48px)', color: '#2C2416', fontWeight: 500, marginBottom: '24px', lineHeight: 1.2 }}>
-              A Definitive Journey Through Sacred Bihar
-            </h2>
-            <p style={{ color: '#6B4C2A', fontSize: '15px', lineHeight: 1.9, marginBottom: '32px' }}>
-              A meticulously curated path covering the most sacred sites in North India. This journey balances historical exploration with personal reflection.
+      <section className="home-hero">
+        <div className="home-hero__veil" />
+        <div className="home-shell home-hero__content">
+          <div className="home-hero__copy">
+            <p className="home-kicker home-kicker--light">Bihar Buddhist Circuit</p>
+            <h1>
+              A quieter way to
+              <span> walk toward enlightenment</span>
+            </h1>
+            <p className="home-hero__lede">
+              Explore Bodh Gaya, Nalanda, Rajgir, and Vaishali through a journey
+              designed with spiritual depth, local knowledge, and calm modern comfort.
             </p>
-            <div style={{ display: 'flex', gap: '48px', flexWrap: 'wrap' }}>
-              {[['5', 'Days'], ['4', 'Sacred Sites'], ['32,500', 'Per Person']].map(([num, label]) => (
-                <div key={label}>
-                  <p style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '36px', color: '#E8841A' }}>
-                    {label === 'Per Person' ? 'Rs.' + num : num}
-                  </p>
-                  <p style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#6B4C2A' }}>{label}</p>
+
+            <div className="home-hero__actions">
+              <Link to="/destinations" className="home-button home-button--primary">
+                Explore Destinations
+              </Link>
+              <Link to="/itinerary" className="home-button home-button--ghost">
+                Plan My Journey
+              </Link>
+            </div>
+          </div>
+
+          <div className="home-hero__panel">
+            <p className="home-kicker">Best for mindful travel</p>
+            <div className="home-hero__stats">
+              <div>
+                <strong>4</strong>
+                <span>Sacred cities</span>
+              </div>
+              <div>
+                <strong>5D</strong>
+                <span>Signature circuit</span>
+              </div>
+              <div>
+                <strong>24h</strong>
+                <span>Reply target</span>
+              </div>
+            </div>
+            <p className="home-hero__panel-copy">
+              Built for pilgrims, cultural travelers, and retreat seekers who want
+              clarity, beauty, and breathing room without feeling pushed into a rushed package.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-trust-strip">
+        <div className="home-shell home-trust-strip__grid">
+          <div>
+            <strong>Custom planning</strong>
+            <span>Share dates, group size, and comfort level before you commit.</span>
+          </div>
+          <div>
+            <strong>Indicative pricing</strong>
+            <span>Final quotes depend on season, stays, transport, and inclusions.</span>
+          </div>
+          <div>
+            <strong>Direct coordination</strong>
+            <span>Talk to a human on WhatsApp or email, not a generic lead form void.</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-intro">
+        <div className="home-shell home-intro__grid">
+          <div>
+            <p className="home-kicker">Sacred Gateways</p>
+            <h2>The four places that define the journey.</h2>
+          </div>
+          <p className="home-intro__text">
+            From the awakening at Bodh Gaya to the scholarship of Nalanda, the
+            hills of Rajgir, and the peace of Vaishali, each stop reveals a
+            different face of Buddhist heritage in Bihar.
+          </p>
+        </div>
+      </section>
+
+      <section className="home-destinations">
+        <div className="home-shell">
+          <div className="home-destination-grid">
+            {destinations.map((dest) => (
+              <Link
+                key={dest.name}
+                to="/destinations"
+                className="home-destination-card"
+                style={{ backgroundImage: `linear-gradient(180deg, rgba(28, 23, 16, 0.18), rgba(28, 23, 16, 0.88)), url(${dest.image})` }}
+              >
+                <p className="home-destination-card__accent">{dest.accent}</p>
+                <div>
+                  <h3>{dest.name}</h3>
+                  <p>{dest.tagline}</p>
                 </div>
-              ))}
-            </div>
+                <span>Discover place</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ backgroundColor: '#2C2416', padding: '64px 48px 32px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '48px', marginBottom: '64px' }}>
-          <div>
-            <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '28px', marginBottom: '16px' }}>
-              <span style={{ color: '#E8841A' }}>Bodhi</span>
-              <span style={{ color: '#FAF6F0' }}>Bihar</span>
-            </h3>
-            <p style={{ color: '#FAF6F0', opacity: 0.5, fontSize: '13px', lineHeight: 1.8, maxWidth: '260px' }}>
-              Bihar's sacred Buddhist pilgrimage platform. Discover the land of enlightenment.
+      <section className="home-highlights">
+        <div className="home-shell">
+          <div className="home-section-heading">
+            <div>
+              <p className="home-kicker home-kicker--light">Why BodhiBihar</p>
+              <h2>Designed to feel reverent, seamless, and deeply rooted.</h2>
+            </div>
+            <p>
+              We blend itinerary design, local coordination, and spiritual
+              context so the home page promise carries into the actual journey.
             </p>
           </div>
 
-          <div>
-            <p style={{ color: '#E8841A', fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '20px' }}>Explore</p>
-            {[['/', 'Home'], ['/destinations', 'Destinations'], ['/itinerary', 'Itineraries'], ['/stays', 'Stays']].map(([path, label]) => (
-              <Link key={label} to={path} style={{ display: 'block', color: '#FAF6F0', opacity: 0.5, fontSize: '13px', marginBottom: '12px', textDecoration: 'none' }}>
-                {label}
-              </Link>
+          <div className="home-highlight-grid">
+            {highlights.map((item) => (
+              <article key={item.number} className="home-highlight-card">
+                <p className="home-highlight-card__number">{item.number}</p>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </article>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div>
-            <p style={{ color: '#E8841A', fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '20px' }}>Sacred Sites</p>
-            {['Bodh Gaya', 'Nalanda', 'Rajgir', 'Vaishali'].map((site) => (
-              <Link key={site} to="/destinations" style={{ display: 'block', color: '#FAF6F0', opacity: 0.5, fontSize: '13px', marginBottom: '12px', textDecoration: 'none' }}>
-                {site}
-              </Link>
-            ))}
+      <section className="home-itinerary">
+        <div className="home-shell home-itinerary__grid">
+          <div className="home-itinerary__summary">
+            <p className="home-kicker">Featured Route</p>
+            <h2>The 5-day Bihar Buddhist Circuit</h2>
+            <p>
+              A balanced route for first-time visitors who want spiritual depth,
+              historical context, and enough unstructured time to actually absorb
+              each place.
+            </p>
+
+            <div className="home-itinerary__metrics">
+              <div>
+                <strong>5</strong>
+                <span>Days</span>
+              </div>
+              <div>
+                <strong>4</strong>
+                <span>Sacred sites</span>
+              </div>
+              <div>
+                <strong>Rs. 32,500</strong>
+                <span>Starting price</span>
+              </div>
+            </div>
+
+            <Link to="/itinerary" className="home-button home-button--dark">
+              View Full Itinerary
+            </Link>
+            <p className="home-itinerary__disclaimer">
+              Final quotes vary by season, room category, transport, guide needs, and group size.
+            </p>
           </div>
 
+          <div className="home-itinerary__card">
+            <p className="home-kicker">What the days feel like</p>
+            <div className="home-itinerary__list">
+              {itineraryDays.map((day) => (
+                <p key={day}>{day}</p>
+              ))}
+            </div>
+            <blockquote>
+              “Less rush, more presence” is the principle behind this signature
+              route.
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-cta">
+        <div className="home-shell home-cta__panel">
           <div>
-            <p style={{ color: '#E8841A', fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '20px' }}>Contact</p>
-            <a href="mailto:team.bodhibihar@gmail.com" style={{ display: 'block', color: '#FAF6F0', opacity: 0.5, fontSize: '13px', marginBottom: '12px', textDecoration: 'none' }}>
-              team.bodhibihar@gmail.com
-            </a>
-            <a href="https://wa.me/917782019833" target="_blank" rel="noopener noreferrer" style={{ color: '#E8841A', fontSize: '13px', textDecoration: 'none' }}>
-              WhatsApp Us →
+            <p className="home-kicker">Begin the pilgrimage</p>
+            <h2>Start with a route, then shape the experience around your real needs.</h2>
+          </div>
+          <div className="home-cta__actions">
+            <Link to="/contact" className="home-button home-button--primary">
+              Share Trip Brief
+            </Link>
+            <a
+              href={createWhatsAppLink('Hello BodhiBihar, I would like help planning a Bihar Buddhist circuit trip.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-button home-button--outline"
+            >
+              WhatsApp Us
             </a>
           </div>
         </div>
+      </section>
 
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-          <p style={{ color: '#FAF6F0', opacity: 0.3, fontSize: '12px' }}>
-            2025 BodhiBihar. The Digital Sanctuary.
-          </p>
-          <div style={{ display: 'flex', gap: '24px' }}>
-            {['Privacy Policy', 'Terms of Service', 'Contact'].map((item) => (
-              <p key={item} style={{ color: '#FAF6F0', opacity: 0.3, fontSize: '12px', cursor: 'pointer' }}>{item}</p>
-            ))}
+      <footer className="home-footer">
+        <div className="home-shell">
+          <div className="home-footer__grid">
+            <div>
+              <h3>
+                <span>Bodhi</span>Bihar
+              </h3>
+              <p>
+                A contemporary pilgrimage platform for discovering Bihar’s sacred
+                Buddhist landscape with intention.
+              </p>
+            </div>
+
+            <div>
+              <p className="home-footer__label">Navigate</p>
+              {footerLinks.map(([path, label]) => (
+                <Link key={label} to={path}>
+                  {label}
+                </Link>
+              ))}
+            </div>
+
+            <div>
+              <p className="home-footer__label">Sacred Sites</p>
+              {destinations.map((site) => (
+                <Link key={site.name} to="/destinations">
+                  {site.name}
+                </Link>
+              ))}
+            </div>
+
+            <div>
+              <p className="home-footer__label">Contact</p>
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+              <a
+                href={createWhatsAppLink('Hello BodhiBihar, I would like help planning a Buddhist circuit journey.')}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp support
+              </a>
+            </div>
+          </div>
+
+          <div className="home-footer__bottom">
+            <p>2026 BodhiBihar. The digital sanctuary for sacred travel.</p>
+            <div>
+              <Link to="/privacy">Privacy Policy</Link>
+              <Link to="/terms">Terms of Service</Link>
+              <Link to="/contact">Contact</Link>
+            </div>
           </div>
         </div>
       </footer>
-
     </div>
   )
 }

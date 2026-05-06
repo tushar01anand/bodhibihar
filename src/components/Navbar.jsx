@@ -1,152 +1,79 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import { createWhatsAppLink } from '../lib/contact'
+
+const navItems = [
+  ['/', 'Home'],
+  ['/destinations', 'Destinations'],
+  ['/itinerary', 'Itineraries'],
+  ['/stays', 'Stays'],
+  ['/contact', 'Contact'],
+]
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <nav
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        backgroundColor: '#FAF6F0',
-        padding: '16px 24px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}
-    >
+    <nav className="site-nav">
+      <div className="site-nav__shell">
+        <Link to="/" className="site-nav__brand" onClick={() => setMenuOpen(false)}>
+          <span>Bodhi</span>Bihar
+        </Link>
 
-      {/* Logo */}
-      <Link
-        to="/"
-        style={{
-          textDecoration: 'none',
-          fontFamily: 'Cormorant Garamond, Georgia, serif',
-          fontSize: '22px',
-        }}
-      >
-        <span style={{ color: '#E8841A' }}>Bodhi</span>
-        <span style={{ color: '#2C2416' }}>Bihar</span>
-      </Link>
+        <div className="site-nav__links desktop-nav">
+          {navItems.map(([path, label]) => (
+            <NavLink
+              key={path}
+              to={path}
+              className={({ isActive }) =>
+                `site-nav__link${isActive ? ' site-nav__link--active' : ''}`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
+        </div>
 
-      {/* Desktop Links */}
-      <div
-        style={{ display: 'flex', alignItems: 'center', gap: '40px' }}
-        className="desktop-nav"
-      >
-        {[
-          ['/', 'Home'],
-          ['/destinations', 'Destinations'],
-          ['/itinerary', 'Itineraries'],
-          ['/stays', 'Stays'],
-        ].map(([path, label]) => (
-          <Link
-            key={path}
-            to={path}
-            style={{
-              textDecoration: 'none',
-              fontSize: '11px',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: '#2C2416',
-            }}
-          >
-            {label}
-          </Link>
-        ))}
+        <a
+          href={createWhatsAppLink('Hello BodhiBihar, I would like help planning a Buddhist circuit journey.')}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="site-nav__cta desktop-nav"
+        >
+          Plan Journey
+        </a>
+
+        <button
+          className="site-nav__toggle mobile-nav"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+        </button>
       </div>
 
-      {/* CTA - Desktop */}
-      <a
-        href="https://wa.me/+917782019833"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="desktop-nav"
-        style={{
-          backgroundColor: '#E8841A',
-          color: '#FAF6F0',
-          padding: '12px 24px',
-          fontSize: '11px',
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          textDecoration: 'none',
-        }}
-      >
-        Plan Journey
-      </a>
-
-      {/* Hamburger - Mobile */}
-      <button
-        className="mobile-nav"
-        onClick={() => setMenuOpen(!menuOpen)}
-        style={{
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          fontSize: '24px',
-          color: '#2C2416',
-        }}
-      >
-        {menuOpen ? '✕' : '☰'}
-      </button>
-
-      {/* Mobile Menu */}
       {menuOpen && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '60px',
-            left: 0,
-            right: 0,
-            backgroundColor: '#FAF6F0',
-            padding: '24px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-            borderTop: '1px solid #E8DDD0',
-          }}
-        >
-          {[
-            ['/', 'Home'],
-            ['/destinations', 'Destinations'],
-            ['/itinerary', 'Itineraries'],
-            ['/stays', 'Stays'],
-          ].map(([path, label]) => (
-            <Link
+        <div className="site-nav__mobile-panel mobile-nav">
+          {navItems.map(([path, label]) => (
+            <NavLink
               key={path}
               to={path}
               onClick={() => setMenuOpen(false)}
-              style={{
-                textDecoration: 'none',
-                fontSize: '14px',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: '#2C2416',
-              }}
+              className={({ isActive }) =>
+                `site-nav__mobile-link${isActive ? ' site-nav__mobile-link--active' : ''}`
+              }
             >
               {label}
-            </Link>
+            </NavLink>
           ))}
 
-          {/* CTA - Mobile */}
           <a
-            href="https://wa.me/+917782019833"
+            href={createWhatsAppLink('Hello BodhiBihar, I would like help planning a Buddhist circuit journey.')}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              backgroundColor: '#E8841A',
-              color: '#FAF6F0',
-              padding: '14px 24px',
-              fontSize: '11px',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              textDecoration: 'none',
-              textAlign: 'center',
-            }}
+            className="site-nav__mobile-cta"
           >
             Plan Journey
           </a>

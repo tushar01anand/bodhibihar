@@ -1,162 +1,145 @@
 import { useState } from 'react'
+import PageMeta from '../components/PageMeta'
 
 const destinations = [
   {
     name: 'Bodh Gaya',
-    tagline: 'The Epicenter of Enlightenment',
-    description: 'The most sacred Buddhist site in the world. Where Siddhartha Gautama attained enlightenment under the Bodhi Tree.',
-    color: '#2C2416',
+    tagline: 'The epicenter of enlightenment',
+    description:
+      'The most sacred Buddhist site in the world, where Siddhartha Gautama attained enlightenment beneath the Bodhi Tree.',
     image: '/bodhgaya.jpg',
     filter: 'Bodh Gaya',
+    accent: 'Mahabodhi Temple',
+    rhythm: 'Dawn meditation, monastery circuits, evening chants',
   },
   {
     name: 'Nalanda',
-    tagline: 'Wisdom of the Ancient World',
-    description: 'The ancient seat of learning and philosophical discourse. Home to the world\'s first residential university.',
-    color: '#6B4C2A',
+    tagline: 'Wisdom of the ancient world',
+    description:
+      "The great seat of Buddhist learning, where scholarship, debate, and disciplined monastic life shaped centuries of thought.",
     image: '/nalanda.jpg',
     filter: 'Nalanda',
+    accent: 'Ancient University',
+    rhythm: 'Ruins, museum walks, layered historical storytelling',
   },
   {
     name: 'Rajgir',
-    tagline: 'The Royal Abode of Peace',
-    description: 'The ancient capital where the Buddha taught for many years. Surrounded by five hills of extraordinary beauty.',
-    color: '#4A3520',
+    tagline: 'The royal abode of peace',
+    description:
+      'An ancient capital ringed by hills, caves, ropeways, and the landscapes where the Buddha often taught and reflected.',
     image: '/rajgir.jpg',
     filter: 'Rajgir',
+    accent: 'Gridhakuta Hill',
+    rhythm: 'Hill trails, ropeway rides, panoramic silence',
   },
   {
     name: 'Vaishali',
-    tagline: 'Birthplace of Democracy & Monastic Peace',
-    description: 'One of the first democratic republics in the world. Where the Buddha delivered his last sermon.',
-    color: '#3D2C1A',
+    tagline: 'Monastic calm and democratic memory',
+    description:
+      'A place of relic stupas, Ashokan history, and the Buddha’s final sermon, carried by a gentler, village-lined pace.',
     image: '/vaishali.jpg',
     filter: 'Vaishali',
+    accent: 'Relic Stupa',
+    rhythm: 'Quiet heritage stops, rural calm, open skies',
   },
 ]
+
+const filters = ['All', 'Bodh Gaya', 'Nalanda', 'Rajgir', 'Vaishali']
 
 const Destinations = () => {
   const [active, setActive] = useState('All')
 
-  const filtered = active === 'All'
-    ? destinations
-    : destinations.filter((d) => d.filter === active)
+  const filtered =
+    active === 'All'
+      ? destinations
+      : destinations.filter((destination) => destination.filter === active)
 
   return (
-    <div style={{ backgroundColor: '#FAF6F0', minHeight: '100vh', paddingTop: '80px' }}>
+    <div className="page destinations-page">
+      <PageMeta
+        title="Destinations | BodhiBihar"
+        description="Explore Bodh Gaya, Nalanda, Rajgir, and Vaishali as part of a mindful Buddhist circuit journey across Bihar."
+      />
 
-      {/* Header */}
-      <section style={{ padding: '80px 48px 48px' }}>
-        <p style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#6B4C2A', marginBottom: '12px' }}>
-          Sacred Sites
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(36px, 6vw, 64px)', color: '#2C2416', fontWeight: 500, lineHeight: 1.1 }}>
-            Timeless<br />
-            <span style={{ fontStyle: 'italic' }}>Sanctuaries</span>
-          </h1>
-          <p style={{ maxWidth: '300px', color: '#6B4C2A', fontSize: '14px', lineHeight: 1.8, textAlign: 'right' }}>
-            Embark on a path of spiritual discovery across the cradle of ancient wisdom and enlightenment.
+      <section className="page-hero">
+        <div className="page-shell page-hero__grid">
+          <div>
+            <p className="page-kicker">Sacred Sites</p>
+            <h1>
+              Timeless sanctuaries
+              <span> across sacred Bihar</span>
+            </h1>
+          </div>
+          <div className="page-hero__aside">
+            <p>
+              Follow the geography of awakening through temple towns, ancient
+              universities, and hill landscapes that still hold contemplative
+              energy.
+            </p>
+            <div className="page-hero__mini-stats">
+              <div>
+                <strong>4</strong>
+                <span>Core stops</span>
+              </div>
+              <div>
+                <strong>1</strong>
+                <span>Living circuit</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="page-shell page-filters">
+        {filters.map((filter) => (
+          <button
+            key={filter}
+            type="button"
+            onClick={() => setActive(filter)}
+            className={`page-filter${active === filter ? ' page-filter--active' : ''}`}
+          >
+            {filter}
+          </button>
+        ))}
+      </section>
+
+      <section className="page-shell destinations-grid">
+        {filtered.map((dest) => (
+          <article
+            key={dest.name}
+            className="destination-feature"
+            style={{
+              backgroundImage: `linear-gradient(180deg, rgba(25, 20, 14, 0.12), rgba(25, 20, 14, 0.9)), url(${dest.image})`,
+            }}
+          >
+            <div className="destination-feature__top">
+              <p className="destination-feature__label">{dest.accent}</p>
+              <p className="destination-feature__rhythm">{dest.rhythm}</p>
+            </div>
+
+            <div className="destination-feature__body">
+              <p className="destination-feature__tagline">{dest.tagline}</p>
+              <h2>{dest.name}</h2>
+              <p>{dest.description}</p>
+              <span>Ideal for reflection, learning, and slow travel</span>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="page-shell destinations-note">
+        <div className="destinations-note__panel">
+          <div>
+            <p className="page-kicker">Travel Note</p>
+            <h3>Choose fewer stops, stay longer, and let each site open gradually.</h3>
+          </div>
+          <p>
+            The circuit is most meaningful when it leaves room for silence,
+            unexpected conversations, and repeated visits to the same sacred
+            places at different hours of the day.
           </p>
         </div>
       </section>
-
-      {/* Filter Bar */}
-      <section style={{ padding: '0 48px 48px' }}>
-        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-          {['All', 'Bodh Gaya', 'Nalanda', 'Rajgir', 'Vaishali'].map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActive(filter)}
-              style={{
-                padding: '8px 20px',
-                fontSize: '11px',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                border: 'none',
-                cursor: 'pointer',
-                backgroundColor: active === filter ? '#E8841A' : 'transparent',
-                color: active === filter ? '#FAF6F0' : '#6B4C2A',
-                borderBottom: active === filter ? 'none' : '1px solid #E8DDD0',
-              }}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* Destinations Grid */}
-      <section style={{ padding: '0 48px 100px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: filtered.length === 1 ? '1fr' : 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2px' }}>
-          {filtered.map((dest) => (
-            <div
-              key={dest.name}
-              style={{
-                backgroundImage: 'linear-gradient(to top, rgba(44,36,22,0.95) 0%, rgba(44,36,22,0.3) 100%), url(' + dest.image + ')',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundColor: dest.color,
-                padding: '64px 48px',
-                minHeight: '320px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-end',
-                cursor: 'pointer',
-              }}
-            >
-              <h2 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '42px', color: '#FAF6F0', marginBottom: '8px' }}>
-                {dest.name}
-              </h2>
-              <p style={{ color: '#E8841A', fontSize: '12px', letterSpacing: '0.1em', marginBottom: '12px' }}>
-                {dest.tagline}
-              </p>
-              <p style={{ color: '#FAF6F0', opacity: 0.6, fontSize: '13px', lineHeight: 1.8, marginBottom: '24px', maxWidth: '380px' }}>
-                {dest.description}
-              </p>
-              <p style={{ color: '#E8841A', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-                Explore →
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <section style={{ backgroundColor: '#2C2416', padding: '80px 48px', textAlign: 'center' }}>
-        <p style={{ fontSize: '24px', marginBottom: '16px' }}>🙏</p>
-        <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '36px', color: '#FAF6F0', marginBottom: '32px' }}>
-          Join our silent newsletter for curated pilgrimage insights.
-        </h3>
-        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0' }}>
-          <input
-            type="email"
-            placeholder="Your essence (Email)"
-            style={{
-              padding: '14px 24px',
-              fontSize: '13px',
-              border: '1px solid rgba(255,255,255,0.2)',
-              backgroundColor: 'transparent',
-              color: '#FAF6F0',
-              width: '320px',
-              outline: 'none',
-            }}
-          />
-          <button style={{
-            padding: '14px 28px',
-            backgroundColor: '#E8841A',
-            color: '#FAF6F0',
-            border: 'none',
-            fontSize: '11px',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-          }}>
-            Subscribe
-          </button>
-        </div>
-      </section>
-
     </div>
   )
 }

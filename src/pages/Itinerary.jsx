@@ -1,200 +1,177 @@
+import { Link } from 'react-router-dom'
+import PageMeta from '../components/PageMeta'
+import { createWhatsAppLink } from '../lib/contact'
+
 const days = [
   {
     number: '01',
-    location: 'BODH GAYA',
+    location: 'Bodh Gaya',
     title: 'The Great Awakening',
     activities: [
-      'Guided tour of Mahabodhi Temple complex',
-      'Meditation session under the sacred Bodhi Tree',
-      'Evening chanting ceremony at the Monastery',
+      'Guided tour of the Mahabodhi Temple complex',
+      'Meditation beneath the sacred Bodhi Tree',
+      'Evening chanting ceremony at the monastery',
     ],
-    tip: 'Early morning at 5 AM is the best time for meditation when the atmosphere is charged with collective silence.',
+    tip: 'Arrive before sunrise if possible. The first light and soft chanting make the site feel unusually intimate.',
   },
   {
     number: '02',
-    location: 'RAJGIR',
+    location: 'Rajgir',
     title: "Vulture's Peak Heights",
     activities: [
-      'Ropeway ride to Shanti Stupa',
-      "Silent walk to Gridhakuta Hill (Vulture's Peak)",
-      "Explore Bimbisara's Jail and Hot Springs",
+      'Ropeway ride to the Shanti Stupa',
+      "Silent walk to Gridhakuta Hill, the Buddha's teaching site",
+      "Explore Bimbisara's Jail and the hot springs",
     ],
-    tip: 'Wear comfortable walking shoes as the ascent to the peak involves a gentle but steady climb on paved paths.',
+    tip: 'Wear steady walking shoes and keep water with you. Rajgir is best experienced slowly rather than as a single sprint.',
   },
   {
     number: '03',
-    location: 'NALANDA',
+    location: 'Nalanda',
     title: 'Echoes of Ancient Wisdom',
     activities: [
-      'Visit Nalanda University archaeological ruins',
+      'Visit the Nalanda University archaeological ruins',
       'Explore the Nalanda Archaeological Museum',
-      'Huen Tsang Memorial Hall visit',
+      'Stop at Hiuen Tsang Memorial Hall',
     ],
-    tip: 'Hire an official guide at the gate to truly understand the complex architectural and historical layers of this site.',
+    tip: 'An official guide adds real value here because the meaning of the site comes alive through context, not just scale.',
   },
   {
     number: '04',
-    location: 'VAISHALI',
+    location: 'Vaishali',
     title: 'The Relic Stupa',
     activities: [
       'Visit the Ashoka Pillar at Kolhua',
-      'Abhishek Pushkarni (Coronation Tank)',
-      'Vishwa Shanti Stupa exploration',
+      'Walk around Abhishek Pushkarni',
+      'Spend quiet time near the Vishwa Shanti Stupa',
     ],
-    tip: 'Vaishali is peaceful and quiet. Carry some water as the sites are spread out amidst local villages.',
+    tip: 'Sites are spread apart and the landscape is open, so lighter midday plans work better than back-to-back visits.',
   },
   {
     number: '05',
-    location: 'PATNA',
-    title: 'Reflection & Departure',
+    location: 'Patna',
+    title: 'Reflection and Departure',
     activities: [
-      'Visit the Buddha Smriti Park and Museum',
-      'Stroll through the Patliputra ruins',
-      'Transfer to Patna Airport',
+      'Visit Buddha Smriti Park and museum spaces',
+      'Optional stop near the old Patliputra area',
+      'Transfer onward for departure',
     ],
-    tip: 'Pick up local Madhubani paintings as a spiritual souvenir before your flight.',
+    tip: 'Keep the final day spacious so the journey ends gently rather than feeling like a rushed checkout sequence.',
   },
-];
+]
 
 const Itinerary = () => {
   return (
-    <div style={{ backgroundColor: '#FAF6F0', minHeight: '100vh', paddingTop: '80px' }}>
+    <div className="page itinerary-page">
+      <PageMeta
+        title="Itinerary | BodhiBihar"
+        description="See a sample 5-day BodhiBihar route through Bodh Gaya, Rajgir, Nalanda, Vaishali, and Patna."
+      />
 
-      {/* Header */}
-      <section style={{ padding: '80px 48px 64px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'start' }}>
-        <div>
-          <p style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#6B4C2A', marginBottom: '12px' }}>
-            A 5-Day Spiritual Pilgrimage
-          </p>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '64px', color: '#2C2416', fontWeight: 500, lineHeight: 1.1, marginBottom: '24px' }}>
-            The Path of<br />
-            <span style={{ fontStyle: 'italic' }}>Enlightenment</span>
-          </h1>
-          <p style={{ color: '#6B4C2A', fontSize: '15px', lineHeight: 1.9, maxWidth: '480px' }}>
-            A meticulously curated journey through the sacred lands where the Buddha walked, taught, and attained Nirvana. Experience deep serenity in the heart of Bihar.
-          </p>
-        </div>
+      <section className="page-hero">
+        <div className="page-shell itinerary-hero">
+          <div>
+            <p className="page-kicker">A 5-Day Spiritual Pilgrimage</p>
+            <h1>
+              The path of
+              <span> enlightenment</span>
+            </h1>
+            <p className="page-hero__summary">
+              A thoughtfully paced route through the landscapes where the Buddha
+              walked, taught, and awakened, with room for devotion, history, and rest.
+            </p>
+          </div>
 
-        {/* Quote card */}
-        <div style={{ backgroundColor: '#2C2416', padding: '48px', marginTop: '40px' }}>
-          <p style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '22px', color: '#FAF6F0', fontStyle: 'italic', lineHeight: 1.7, marginBottom: '24px' }}>
-            "Peace comes from within. Do not seek it without."
-          </p>
-          <p style={{ color: '#E8841A', fontSize: '11px', letterSpacing: '0.2em' }}>— GAUTAMA BUDDHA</p>
+          <aside className="itinerary-quote">
+            <p>
+              “Peace comes from within. Do not seek it without.”
+            </p>
+            <span>Gautama Buddha</span>
+          </aside>
         </div>
       </section>
 
-      {/* Days + Sidebar */}
-      <section style={{ padding: '0 48px 100px', display: 'grid', gridTemplateColumns: '1fr 320px', gap: '64px', alignItems: 'start' }}>
-
-        {/* Days */}
-        <div>
+      <section className="page-shell itinerary-layout">
+        <div className="itinerary-timeline">
           {days.map((day) => (
-            <div
-              key={day.number}
-              style={{ borderTop: '1px solid #E8DDD0', paddingTop: '48px', marginBottom: '48px' }}
-            >
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px' }}>
-                <div>
-                  <p style={{ color: '#E8841A', fontSize: '11px', letterSpacing: '0.3em', marginBottom: '4px' }}>
-                    {day.number}
-                  </p>
-                  <p style={{ fontSize: '10px', letterSpacing: '0.25em', color: '#6B4C2A', marginBottom: '12px' }}>
-                    {day.location}
-                  </p>
-                  <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '32px', color: '#2C2416', marginBottom: '20px' }}>
-                    {day.title}
-                  </h3>
-                  <p style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#6B4C2A', marginBottom: '12px' }}>
-                    Activities
-                  </p>
-                  {day.activities.map((act) => (
-                    <p key={act} style={{ color: '#2C2416', fontSize: '13px', lineHeight: 1.8, marginBottom: '6px' }}>
-                      • {act}
-                    </p>
-                  ))}
+            <article key={day.number} className="itinerary-day">
+              <div className="itinerary-day__header">
+                <div className="itinerary-day__marker">
+                  <span>{day.number}</span>
                 </div>
-                <div style={{ backgroundColor: '#F2EBE0', padding: '24px' }}>
-                  <p style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#E8841A', marginBottom: '12px' }}>
-                    Travel Tip
-                  </p>
-                  <p style={{ color: '#6B4C2A', fontSize: '13px', lineHeight: 1.8 }}>
-                    {day.tip}
-                  </p>
+                <div>
+                  <p className="itinerary-day__location">{day.location}</p>
+                  <h2>{day.title}</h2>
                 </div>
               </div>
-            </div>
+
+              <div className="itinerary-day__body">
+                <div>
+                  <p className="itinerary-day__label">Day Rhythm</p>
+                  <div className="itinerary-day__activities">
+                    {day.activities.map((activity) => (
+                      <p key={activity}>{activity}</p>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="itinerary-tip">
+                  <p className="itinerary-day__label">Travel Tip</p>
+                  <p>{day.tip}</p>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
 
-        {/* Sticky Sidebar */}
-        <div style={{ position: 'sticky', top: '100px' }}>
-          <div style={{ backgroundColor: '#2C2416', padding: '40px' }}>
-            <p style={{ color: '#E8841A', fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '16px' }}>
-              Reserve Your Seat
-            </p>
-            <p style={{ color: '#FAF6F0', opacity: 0.7, fontSize: '13px', lineHeight: 1.7, marginBottom: '32px' }}>
-              Experience the sacred trail with our expert spiritual guides.
+        <aside className="itinerary-sidebar">
+          <div className="itinerary-sidebar__card">
+            <p className="page-kicker page-kicker--light">Reserve Your Seat</p>
+            <h3>A complete circuit for first-time pilgrims.</h3>
+            <p>
+              Guided routing, accommodation suggestions, and a pace that leaves
+              time for both devotion and recovery.
             </p>
 
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '20px', marginBottom: '20px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-                <p style={{ color: '#FAF6F0', opacity: 0.5, fontSize: '12px', letterSpacing: '0.1em' }}>DURATION</p>
-                <p style={{ color: '#FAF6F0', fontSize: '12px' }}>5 Days, 4 Nights</p>
+            <div className="itinerary-sidebar__stats">
+              <div>
+                <span>Duration</span>
+                <strong>5 Days, 4 Nights</strong>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <p style={{ color: '#FAF6F0', opacity: 0.5, fontSize: '12px', letterSpacing: '0.1em' }}>STARTS FROM</p>
-                <p style={{ color: '#E8841A', fontSize: '14px', fontFamily: 'Cormorant Garamond, Georgia, serif' }}>₹32,500 / person</p>
+              <div>
+                <span>Starts From</span>
+                <strong>Rs. 32,500 / person</strong>
               </div>
             </div>
 
-            {/* FIXED BUTTON 1 */}
+            <p className="itinerary-sidebar__note">
+              Starting price only. Final quotes depend on date, stay category, vehicle, and group size.
+            </p>
+
             <a
-              href="https://wa.me/919999999999"
+              href={createWhatsAppLink('Hello BodhiBihar, I am interested in the 5-day Buddhist circuit itinerary. Please share the detailed quote and inclusions.')}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: 'block',
-                backgroundColor: '#E8841A',
-                color: '#FAF6F0',
-                padding: '16px',
-                textAlign: 'center',
-                fontSize: '11px',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-                marginBottom: '12px',
-              }}
+              className="home-button home-button--primary"
             >
               Book This Journey
             </a>
-
-            {/* FIXED BUTTON 2 */}
             <a
-              href="https://wa.me/919999999999"
+              href={createWhatsAppLink('Hello BodhiBihar, I have a question about the 5-day itinerary.')}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: 'block',
-                border: '1px solid rgba(255,255,255,0.2)',
-                color: '#FAF6F0',
-                padding: '14px',
-                textAlign: 'center',
-                fontSize: '11px',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                textDecoration: 'none',
-              }}
+              className="itinerary-sidebar__secondary"
             >
               WhatsApp Inquiry
             </a>
+            <Link to="/contact" className="itinerary-sidebar__secondary">
+              Share Trip Brief
+            </Link>
           </div>
-        </div>
-
+        </aside>
       </section>
-
     </div>
-  );
-};
+  )
+}
 
-export default Itinerary;
+export default Itinerary

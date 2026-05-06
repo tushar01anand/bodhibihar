@@ -1,16 +1,34 @@
-# React + Vite
+# BodhiBihar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BodhiBihar is a React and Vite marketing site for a Bihar Buddhist circuit startup. The current product focuses on destination discovery, sample itineraries, curated stays, and direct trip inquiries through WhatsApp or email.
 
-Currently, two official plugins are available:
+## Local Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Scripts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run dev
+npm run build
+npm run lint
+npm run preview
+```
 
-## Expanding the ESLint configuration
+## Current Scope
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Home page positioning and trust messaging
+- Destination overview for Bodh Gaya, Nalanda, Rajgir, and Vaishali
+- Sample itinerary page
+- Stay discovery with inquiry links
+- Contact, privacy, and terms pages
+
+## Next Product Steps
+
+- Add analytics and conversion tracking
+- Replace hard-coded inventory with a CMS or admin-managed data source
+- Add a real inquiry backend or CRM integration
+- Publish fuller booking, cancellation, and refund policies

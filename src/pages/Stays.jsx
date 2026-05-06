@@ -1,230 +1,221 @@
 import { useState } from 'react'
+import PageMeta from '../components/PageMeta'
+import { createWhatsAppLink } from '../lib/contact'
 
 const stays = [
   {
     name: 'Root Institute',
     location: 'Bodh Gaya, Bihar',
-    type: 'MONASTERY',
+    type: 'Monastery',
     price: '2,400',
-    description: 'A center for Buddhist meditation and study, offering simple, clean rooms amidst lush gardens. Perfect for long-term retreat.',
+    description:
+      'A center for Buddhist meditation and study with simple, clean rooms surrounded by gardens and retreat energy.',
     whatsapp: '+917782019833',
     filter: 'Bodh Gaya',
+    mood: 'Quiet retreat setting',
   },
   {
     name: 'The Royal Residency',
     location: 'Bodh Gaya',
-    type: 'HOTEL',
+    type: 'Hotel',
     price: '8,500',
-    description: 'Japanese-inspired hospitality focused on silence and comfort. Features a traditional Zen garden and communal meditation hall.',
+    description:
+      'Japanese-inspired hospitality focused on silence and comfort, with a Zen garden atmosphere and shared contemplative spaces.',
     whatsapp: '+917782019833',
     filter: 'Bodh Gaya',
+    mood: 'Refined comfort',
   },
   {
     name: 'Tergar Guest House',
     location: 'Bodh Gaya',
-    type: 'MONASTERY',
+    type: 'Monastery',
     price: '1,800',
-    description: 'Stay within the vibrant Tibetan community. Tergar provides an authentic monastic experience with modern basic amenities.',
+    description:
+      'An authentic stay within a vibrant Tibetan Buddhist community with modest amenities and a grounded monastic feel.',
     whatsapp: '+917782019833',
     filter: 'Bodh Gaya',
+    mood: 'Community-led stay',
   },
   {
     name: 'Vishwa Shanti Lodge',
     location: 'Rajgir',
-    type: 'HOTEL',
+    type: 'Hotel',
     price: '4,200',
-    description: 'Nestled near the Gridhakuta Hill, this boutique lodge offers panoramic views and organic vegetarian cuisine.',
+    description:
+      'A boutique lodge near Gridhakuta Hill with hillside views, organic vegetarian cuisine, and a softer boutique experience.',
     whatsapp: '+917782019833',
     filter: 'Rajgir',
+    mood: 'Scenic hillside base',
   },
   {
     name: 'Thai Monastery Guest',
     location: 'Bodh Gaya',
-    type: 'MONASTERY',
+    type: 'Monastery',
     price: '1,200',
-    description: 'Beautifully maintained Thai-style architecture. Offers austere but deeply peaceful accommodations for pilgrims.',
+    description:
+      'Beautiful Thai-style architecture and deeply peaceful accommodations for pilgrims who prefer simplicity over indulgence.',
     whatsapp: '+917782019833',
     filter: 'Bodh Gaya',
+    mood: 'Minimal and devotional',
   },
   {
     name: 'Nalanda Heritage Inn',
     location: 'Nalanda',
-    type: 'HOTEL',
+    type: 'Hotel',
     price: '3,800',
-    description: 'Located just minutes from the Nalanda University ruins, combining historic charm with modern hospitality.',
+    description:
+      'A practical heritage-leaning stay close to the ruins, ideal for travelers prioritizing access, ease, and historical atmosphere.',
     whatsapp: '+917782019833',
     filter: 'Nalanda',
+    mood: 'Close to key sites',
   },
+]
+
+const filters = ['All Locations', 'Bodh Gaya', 'Nalanda', 'Rajgir', 'Vaishali']
+const monasteryRules = [
+  'Observe noble silence during designated evening and early morning hours.',
+  'Wear modest clothing within monastery premises and prayer halls.',
+  'Avoid alcohol and non-vegetarian food in shared guest areas.',
 ]
 
 const Stays = () => {
   const [active, setActive] = useState('All Locations')
 
-  const filtered = active === 'All Locations'
-    ? stays
-    : stays.filter((s) => s.filter === active)
+  const filtered =
+    active === 'All Locations'
+      ? stays
+      : stays.filter((stay) => stay.filter === active)
 
   return (
-    <div style={{ backgroundColor: '#FAF6F0', minHeight: '100vh', paddingTop: '80px' }}>
+    <div className="page stays-page">
+      <PageMeta
+        title="Stays | BodhiBihar"
+        description="Browse monastery guest houses and hotels across the Bihar Buddhist circuit, with pricing guidance and inquiry support."
+      />
 
-      {/* Header */}
-      <section style={{ padding: '80px 48px 48px' }}>
-        <p style={{ fontSize: '11px', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#6B4C2A', marginBottom: '12px' }}>
-          Sacred Residences
-        </p>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 'clamp(36px, 6vw, 64px)', color: '#2C2416', fontWeight: 500, lineHeight: 1.1 }}>
-            Find Sanctuary in<br />
-            <span style={{ color: '#E8841A', fontStyle: 'italic' }}>Noble Silence</span>
-          </h1>
-          <p style={{ maxWidth: '300px', color: '#6B4C2A', fontSize: '14px', lineHeight: 1.8 }}>
-            From monastic guest houses to refined heritage stays, choose a dwelling that honors your inner journey.
-          </p>
+      <section className="page-hero">
+        <div className="page-shell page-hero__grid">
+          <div>
+            <p className="page-kicker">Sacred Residences</p>
+            <h1>
+              Places to stay
+              <span> in noble silence</span>
+            </h1>
+          </div>
+          <div className="page-hero__aside">
+            <p>
+              Choose between monastic guest houses and comfortable hotels, depending
+              on whether your journey needs greater simplicity, convenience, or rest.
+            </p>
+            <div className="page-hero__mini-stats">
+              <div>
+                <strong>2</strong>
+                <span>Stay styles</span>
+              </div>
+              <div>
+                <strong>6</strong>
+                <span>Curated options</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Filter Bar */}
-      <section style={{ padding: '0 48px 48px' }}>
-        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-          {['All Locations', 'Bodh Gaya', 'Nalanda', 'Rajgir', 'Vaishali'].map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActive(filter)}
-              style={{
-                padding: '8px 20px',
-                fontSize: '11px',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                border: 'none',
-                cursor: 'pointer',
-                backgroundColor: active === filter ? '#E8841A' : 'transparent',
-                color: active === filter ? '#FAF6F0' : '#6B4C2A',
-                borderBottom: active === filter ? 'none' : '1px solid #E8DDD0',
-              }}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
+      <section className="page-shell page-filters">
+        {filters.map((filter) => (
+          <button
+            key={filter}
+            type="button"
+            onClick={() => setActive(filter)}
+            className={`page-filter${active === filter ? ' page-filter--active' : ''}`}
+          >
+            {filter}
+          </button>
+        ))}
       </section>
 
-      {/* Stays Grid */}
-      <section style={{ padding: '0 48px 80px' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-          gap: '24px',
-        }}>
-          {filtered.map((stay) => (
-            <div
-              key={stay.name}
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #E8DDD0',
-                overflow: 'hidden',
-              }}
-            >
-              {/* Image Placeholder */}
-              <div style={{
-                height: '200px',
-                backgroundColor: '#2C2416',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
-              }}>
-                <span style={{
-                  position: 'absolute',
-                  top: '12px',
-                  left: '12px',
-                  backgroundColor: stay.type === 'MONASTERY' ? '#E8841A' : '#6B4C2A',
-                  color: '#FAF6F0',
-                  fontSize: '9px',
-                  letterSpacing: '0.2em',
-                  padding: '4px 10px',
-                }}>
+      <section className="page-shell stays-grid">
+        {filtered.length > 0 ? (
+          filtered.map((stay) => (
+            <article key={stay.name} className="stay-card">
+              <div className="stay-card__media">
+                <span
+                  className={`stay-card__type${
+                    stay.type === 'Monastery' ? ' stay-card__type--monastery' : ''
+                  }`}
+                >
                   {stay.type}
                 </span>
-                <p style={{ color: '#FAF6F0', opacity: 0.2, fontSize: '48px' }}>🙏</p>
+                <div className="stay-card__halo" />
+                <p>{stay.mood}</p>
               </div>
 
-              {/* Content */}
-              <div style={{ padding: '24px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                  <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '22px', color: '#2C2416' }}>
-                    {stay.name}
-                  </h3>
-                  <p style={{ color: '#E8841A', fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '18px', whiteSpace: 'nowrap' }}>
-                    Rs. {stay.price}
-                  </p>
+              <div className="stay-card__content">
+                <div className="stay-card__header">
+                  <div>
+                    <h2>{stay.name}</h2>
+                    <span>{stay.location}</span>
+                  </div>
+                  <strong>Rs. {stay.price}</strong>
                 </div>
 
-                <p style={{ color: '#6B4C2A', fontSize: '11px', letterSpacing: '0.1em', marginBottom: '12px' }}>
-                  📍 {stay.location}
-                </p>
+                <p className="stay-card__description">{stay.description}</p>
 
-                <p style={{ color: '#6B4C2A', fontSize: '13px', lineHeight: 1.8, marginBottom: '20px' }}>
-                  {stay.description}
-                </p>
+                <p className="stay-card__price-note">Indicative price per night. Subject to season and availability.</p>
 
-                {/* Fixed WhatsApp Inquiry Button */}
                 <a
-                  href={"https://wa.me/" + stay.whatsapp + "?text=Interested in " + stay.name}
+                  href={createWhatsAppLink(`Hello BodhiBihar, I am interested in staying at ${stay.name}. Please share availability and details.`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    display: 'block',
-                    border: '1px solid #E8841A',
-                    color: '#E8841A',
-                    padding: '12px',
-                    textAlign: 'center',
-                    fontSize: '11px',
-                    letterSpacing: '0.2em',
-                    textTransform: 'uppercase',
-                    textDecoration: 'none',
-                  }}
+                  className="stay-card__link"
                 >
                   Inquiry via WhatsApp
                 </a>
-
               </div>
-            </div>
-          ))}
-        </div>
+            </article>
+          ))
+        ) : (
+          <div className="empty-state">
+            <p className="page-kicker">No Listed Stays Yet</p>
+            <h2>We have not published stay options for this stop.</h2>
+            <p>
+              Ask us directly and we can suggest available monastery guest houses or
+              hotels based on your dates and comfort level.
+            </p>
+            <a
+              href={createWhatsAppLink(`Hello BodhiBihar, I need stay options for ${active}. Please share recommendations.`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="home-button home-button--primary"
+            >
+              Request Options
+            </a>
+          </div>
+        )}
       </section>
 
-      {/* Guidelines */}
-      <section style={{ backgroundColor: '#2C2416', padding: '80px 48px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
-          <div style={{ backgroundColor: '#3D2C1A', padding: '48px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '280px' }}>
-            <div style={{ textAlign: 'center' }}>
-              <p style={{ fontSize: '48px', marginBottom: '16px' }}>🙏</p>
-              <p style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '18px', color: '#FAF6F0', fontStyle: 'italic', lineHeight: 1.7 }}>
-                Silence is not just the absence of sound, but the presence of self.
-              </p>
-              <p style={{ color: '#E8841A', fontSize: '11px', letterSpacing: '0.2em', marginTop: '16px' }}>— DHARMA RULE</p>
-            </div>
-          </div>
+      <section className="page-shell stays-guidelines">
+        <div className="stays-guidelines__quote">
+          <p>Silence is not just the absence of sound, but the presence of self.</p>
+          <span>Dharma Rule</span>
+        </div>
 
-          <div>
-            <h3 style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: '40px', color: '#FAF6F0', marginBottom: '24px' }}>
-              Guidelines for Sacred Living
-            </h3>
-            <p style={{ color: '#FAF6F0', opacity: 0.6, fontSize: '14px', lineHeight: 1.9, marginBottom: '24px' }}>
-              Staying in a monastery guesthouse is a unique opportunity to live according to ancient rhythms. We ask all guests to respect local traditions.
-            </p>
+        <div className="stays-guidelines__content">
+          <p className="page-kicker page-kicker--light">Guidelines for Sacred Living</p>
+          <h3>Staying well in monastery spaces means matching the rhythm of the place.</h3>
+          <p>
+            Guest houses attached to monasteries can be deeply rewarding, but they
+            work best when travelers arrive ready to respect simplicity, routine,
+            and shared quiet.
+          </p>
 
-            {[
-              'Observe noble silence during designated evening and early morning hours',
-              'Modest attire is required within all monastery premises',
-              'Alcohol and non-vegetarian foods are prohibited in guest wings',
-            ].map((rule) => (
-              <div key={rule} style={{ display: 'flex', gap: '12px', marginBottom: '16px', alignItems: 'flex-start' }}>
-                <span style={{ color: '#E8841A', fontSize: '16px' }}>✓</span>
-                <p style={{ color: '#FAF6F0', opacity: 0.7, fontSize: '13px', lineHeight: 1.7 }}>{rule}</p>
+          <div className="stays-guidelines__rules">
+            {monasteryRules.map((rule, index) => (
+              <div key={rule}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <p>{rule}</p>
               </div>
             ))}
-
           </div>
         </div>
       </section>
