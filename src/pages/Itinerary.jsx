@@ -8,20 +8,20 @@ const days = [
     location: 'Bodh Gaya',
     title: 'The Great Awakening',
     activities: [
-      'Guided tour of the Mahabodhi Temple complex',
+      'Guided visit to the Mahabodhi Temple complex',
       'Meditation beneath the sacred Bodhi Tree',
-      'Evening chanting ceremony at the monastery',
+      'Evening chanting at a local monastery',
     ],
     tip: 'Arrive before sunrise if possible. The first light and soft chanting make the site feel unusually intimate.',
   },
   {
     number: '02',
     location: 'Rajgir',
-    title: "Vulture's Peak Heights",
+    title: "Vulture's Peak and Sacred Hills",
     activities: [
-      'Ropeway ride to the Shanti Stupa',
+      'Ropeway ride or drive up to the Shanti Stupa',
       "Silent walk to Gridhakuta Hill, the Buddha's teaching site",
-      "Explore Bimbisara's Jail and the hot springs",
+      "Visit Bimbisara's Jail and the nearby hot springs",
     ],
     tip: 'Wear steady walking shoes and keep water with you. Rajgir is best experienced slowly rather than as a single sprint.',
   },
@@ -73,12 +73,12 @@ const Itinerary = () => {
           <div>
             <p className="page-kicker">A 5-Day Spiritual Pilgrimage</p>
             <h1>
-              The path of
+              The path to
               <span> enlightenment</span>
             </h1>
             <p className="page-hero__summary">
               A thoughtfully paced route through the landscapes where the Buddha
-              walked, taught, and awakened, with room for devotion, history, and rest.
+              walked, taught, and awakened, with space for devotion, historical context, and rest.
             </p>
           </div>
 
@@ -129,8 +129,8 @@ const Itinerary = () => {
             <p className="page-kicker page-kicker--light">Reserve Your Seat</p>
             <h3>A complete circuit for first-time pilgrims.</h3>
             <p>
-              Guided routing, accommodation suggestions, and a pace that leaves
-              time for both devotion and recovery.
+              Route planning, stay guidance, and a pace that leaves time for
+              both devotion and recovery.
             </p>
 
             <div className="itinerary-sidebar__stats">
@@ -145,7 +145,7 @@ const Itinerary = () => {
             </div>
 
             <p className="itinerary-sidebar__note">
-              Starting price only. Final quotes depend on date, stay category, vehicle, and group size.
+              This is a starting price. Final quotes depend on your travel dates, stay category, vehicle, and group size.
             </p>
 
             <a
@@ -162,7 +162,7 @@ const Itinerary = () => {
               rel="noopener noreferrer"
               className="itinerary-sidebar__secondary"
             >
-              WhatsApp Inquiry
+              Ask on WhatsApp
             </a>
             <Link to="/contact" className="itinerary-sidebar__secondary">
               Share Trip Brief
@@ -175,7 +175,7 @@ const Itinerary = () => {
         <div className="page-shell home-cta__panel">
           <div>
             <p className="page-kicker">Make It Yours</p>
-            <h2>Use this 5-day circuit as a base, then adjust the rhythm around your dates and intent.</h2>
+            <h2>Use this 5-day circuit as a base, then shape the pace around your dates and travel intent.</h2>
           </div>
           <div className="home-cta__actions">
             <Link

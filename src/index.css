@@ -293,7 +293,7 @@ a {
 .itinerary-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 32px;
+  gap: 40px;
   align-items: start;
   padding-bottom: 96px;
 }
@@ -324,11 +324,11 @@ a {
 
 .itinerary-timeline {
   display: grid;
-  gap: 20px;
+  gap: 24px;
 }
 
 .itinerary-day {
-  padding: 28px;
+  padding: 32px;
   border-radius: 26px;
   background: rgba(255, 255, 255, 0.54);
   box-shadow: 0 12px 24px rgba(44, 36, 22, 0.04);
@@ -371,7 +371,8 @@ a {
 .itinerary-day__body {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(250px, 0.9fr);
-  gap: 18px;
+  gap: 24px;
+  align-items: stretch;
 }
 
 .itinerary-day__label {
@@ -383,15 +384,29 @@ a {
 
 .itinerary-day__activities {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .itinerary-day__activities p {
   color: #3e3020;
+  position: relative;
+  padding-left: 18px;
+}
+
+.itinerary-day__activities p::before {
+  content: '';
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #d87712;
 }
 
 .itinerary-tip {
-  padding: 18px;
+  height: 100%;
+  padding: 22px;
   border-radius: 20px;
   background: #f2ebe0;
 }
@@ -406,7 +421,7 @@ a {
 }
 
 .itinerary-sidebar__card {
-  padding: 28px;
+  padding: 32px;
   border-radius: 28px;
   background: #2c2416;
   box-shadow: 0 24px 48px rgba(44, 36, 22, 0.14);
@@ -464,6 +479,14 @@ a {
   font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+.itinerary-sidebar .home-button {
+  width: 100%;
+}
+
+.itinerary-sidebar__note {
+  margin-bottom: 20px;
 }
 
 .stays-grid {
